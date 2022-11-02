@@ -20,7 +20,7 @@ git commit -m 'deploy'
 # git push -f git@github.com:<USERNAME>/<USERNAME>.github.io.git main
 
 # 如果你要部署在 https://<USERNAME>.github.io/<REPO>
-# git push -f git@gitee.com:mingxuann/mdb-v2.git master:gh-pages
-git push -f --set-upstream git@gitee.com:mingxuann/mdb-v2.git master:gh-pages
+git push -f git@github.com:mingxuann/bounty-clue.git master:gh-pages
+# git push -f --set-upstream git@github.com:mingxuann/bounty-clue.git master:gh-pages
 
 cd -

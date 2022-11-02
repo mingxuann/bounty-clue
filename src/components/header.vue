@@ -258,7 +258,7 @@ const onConnectClick = async () => {
     top: -120px;
     z-index: 2;
     background-color: rgba(255, 255, 255, 0.9);
-    box-shadow: 0px 5px 14px 6px rgba(0, 0, 0, 0.3);
+    box-shadow: rgba(100, 100, 111, 0.1) 0px 7px 29px 0px;
     transition: 0.5s;
 }
 .anmition-show {

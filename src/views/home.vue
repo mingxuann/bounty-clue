@@ -31,7 +31,6 @@ const onGetNftAssets = async () => {
 <template>
     <div class="home-box">
         <img class="home-backgroundb" src="@/assets/image/home/bg-2.png" alt="" />
-        <img class="home-backgroundc" src="@/assets/image/home/bg-4.png" alt="" />
         <div class="home-box-detile">
             <p class="letis-smail-titile">Let's Create Great Things</p>
             <div class="group-big-title">
@@ -107,13 +106,6 @@ const onGetNftAssets = async () => {
         height: 1239px;
         position: absolute;
         top: 401px;
-        left: 0;
-    }
-    .home-backgroundc {
-        width: 100%;
-        position: absolute;
-        opacity: 0.9;
-        bottom: -570px;
         left: 0;
     }
     .home-box-detile {

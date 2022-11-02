@@ -1,8 +1,15 @@
 /** * @file * @author 何明暄 */
-<script setup></script>
+<script setup>
+import { useRoute } from 'vue-router'
+const route = useRoute()
+</script>
 <template>
     <footer class="footer">
         <img class="home-backgroundb" src="@/assets/image/home/bg-4.png" alt="" />
+        <img
+            class="home-backgroundc"
+            src="@/assets/image/home/bg-3.png"
+            v-if="route.path === 'home'" />
         <div class="footer-logo-box">
             <div class="logo-image">
                 <img class="img-this" src="@/assets/image/home/logo.png" alt="" />
@@ -44,6 +51,14 @@
         position: absolute;
         left: 0px;
         bottom: 0px;
+        z-index: -1;
+    }
+    .home-backgroundc {
+        width: 792px;
+        position: absolute;
+        opacity: 0.9;
+        left: 0;
+        bottom: 0;
         z-index: -1;
     }
     .footer-logo-box {
