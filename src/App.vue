@@ -1,15 +1,15 @@
 /** * @file * @author 何明暄 */
 <script setup>
 import { reactive } from 'vue'
-import Header from '@/components/header.vue'
+import HeaderV2 from '@/components/header-v2.vue'
 import Footer from '@/components/footer.vue'
 const state = reactive({})
 </script>
 <template>
     <div class="app">
-        <Header />
+        <HeaderV2 />
         <router-view class="router-view"></router-view>
-        <Footer />
+        <!-- <Footer /> -->
     </div>
 </template>
 <style lang="less">
