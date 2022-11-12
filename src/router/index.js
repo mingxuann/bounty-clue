@@ -11,9 +11,9 @@ let routes = [
         component: Home,
     },
     {
-        path: '/home-v2',
-        name: 'home-v2',
-        component: () => import('@/views/home-v2.vue'),
+        path: '/home-out',
+        name: 'home-out',
+        component: () => import('@/views/home-out.vue'),
     },
     {
         path: '/claim',
@@ -29,8 +29,8 @@ let routes = [
 ]
 
 const router = createRouter({
-    // history: createWebHashHistory(),
-    history: createWebHistory(),
+    history: createWebHashHistory(),
+    // history: createWebHistory(),
     routes,
 })
 export default router

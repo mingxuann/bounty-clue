@@ -2,14 +2,14 @@
 <script setup>
 import { reactive } from 'vue'
 import HeaderV2 from '@/components/header-v2.vue'
-import Footer from '@/components/footer.vue'
+import FooterV2 from '@/components/footer-v2.vue'
 const state = reactive({})
 </script>
 <template>
     <div class="app">
         <HeaderV2 />
         <router-view class="router-view"></router-view>
-        <!-- <Footer /> -->
+        <FooterV2 />
     </div>
 </template>
 <style lang="less">
@@ -21,6 +21,10 @@ const state = reactive({})
 * {
     margin: 0;
     padding: 0;
+}
+a {
+    text-decoration: none;
+    color: #000;
 }
 .app {
     display: flex;

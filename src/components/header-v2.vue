@@ -59,7 +59,7 @@ const onConnectClick = async () => {
     <header class="header-box anmition" :class="{ 'anmition-show': state.headerAnmition }">
         <div class="header-box-content">
             <div class="logo-img-box" @click="onLogoClick">
-                <img class="logo-img" src="@/assets/image/home/logo-head.png" alt="" />
+                <img class="logo-img" src="@/assets/image/common/logo.png" alt="" />
                 <div class="logo">BOUNYCLUE</div>
             </div>
             <div class="tab-list">
