@@ -5,16 +5,18 @@ const state = reactive({})
 onMounted(() => {
     setInterval(() => {
         changeState()
-    }, 3000)
+    }, 1000)
 })
-const changeState = () => {
-    const blobList = document.querySelectorAll('.blob')
-    for (const iterator of blobList) {
-        create(iterator)
-    }
-}
+
 const random = (min, max) => Math.floor(min + Math.random() * (max - min))
 const remain = (n) => 100 - n
+const changeState = () => {
+    const blobList = document.querySelectorAll('.blob')
+    create(blobList[random(0, blobList.length)])
+    // for (const iterator of blobList) {
+    //     create(iterator)
+    // }
+}
 let offset = 25
 const create = (blob) => {
     let r = []
@@ -32,6 +34,9 @@ const create = (blob) => {
     <div class="home-box">
         <div class="home-content">
             <div class="home-page home-pagea">
+                <div class="switch-right">
+                    <i class="iconfont icon-xiangyouliangci"></i>
+                </div>
                 <div class="blob random-shapea"></div>
                 <div class="blob random-shapeb"></div>
                 <div class="blob random-shapec"></div>
@@ -44,7 +49,10 @@ const create = (blob) => {
                     <p class="bountyclue-smail-title">Group Purchase Of Crypto Assets</p>
                     <div class="button-box">
                         <div class="start-on" @click="changeState">Start On</div>
-                        <div class="start-on">Know More</div>
+                        <div class="start-on">
+                            Know More
+                            <i class="iconfont icon-fenxiang"></i>
+                        </div>
                     </div>
                     <div class="iconfont-list-hade">
                         <i class="iconfont icon-medium"></i>
@@ -59,7 +67,7 @@ const create = (blob) => {
 </template>
 <style lang="less" scoped>
 .home-box {
-    width: 100vw;
+    width: calc(100vw - var(--scrollbar));
     height: 100vh;
     overflow: hidden;
     .home-content {
@@ -72,6 +80,16 @@ const create = (blob) => {
             position: relative;
         }
         .home-pagea {
+            .switch-right {
+                position: absolute;
+                right: 80px;
+                bottom: 40px;
+                z-index: 1;
+                .icon-xiangyouliangci {
+                    font-size: 46px;
+                    color: #000;
+                }
+            }
             .blob {
                 position: absolute;
                 left: 50%;
@@ -123,7 +141,7 @@ const create = (blob) => {
             .bountyclue-box {
                 position: absolute;
                 top: 50%;
-                left: 20%;
+                left: 18%;
                 transform: translateY(-50%);
                 .bountyclue-title {
                     font-size: 68px;
@@ -139,7 +157,7 @@ const create = (blob) => {
                     background-color: #525053;
                     box-shadow: 0px 4px 12px 1px rgba(0, 0, 0, 0.31);
                     margin: 35px 0;
-                    margin-left: 250px;
+                    margin-left: 230px;
                 }
                 .bountyclue-smail-title {
                     font-size: 30px;
@@ -160,6 +178,12 @@ const create = (blob) => {
                         font-size: 28px;
                         font-weight: 600;
                         color: #010101;
+                        display: flex;
+                        align-items: center;
+                        .icon-fenxiang {
+                            font-size: 32px;
+                            margin-left: 14px;
+                        }
                     }
                 }
                 .iconfont-list-hade {

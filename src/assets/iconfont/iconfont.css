@@ -1,6 +1,6 @@
 @font-face {
   font-family: "iconfont"; /* Project id 3710521 */
-  src: url('iconfont.woff2?t=1667289717530') format('woff2');
+  src: url('iconfont.woff2?t=1668418198302') format('woff2');
 }
 
 .iconfont {
@@ -9,6 +9,14 @@
   font-style: normal;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-xiangyouliangci:before {
+  content: "\eb09";
+}
+
+.icon-fenxiang:before {
+  content: "\e600";
 }
 
 .icon-dengchu-box-r-xian:before {

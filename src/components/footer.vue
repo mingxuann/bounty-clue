@@ -1,124 +1,68 @@
 /** * @file * @author 何明暄 */
 <script setup>
-import { useRoute } from 'vue-router'
-const route = useRoute()
+import { reactive } from 'vue'
+const state = reactive({})
+const pushLink = (link) => {
+    window.open(link, '_blank')
+}
 </script>
 <template>
-    <footer class="footer">
-        <img class="home-backgroundb" src="@/assets/image/home/bg-4.png" alt="" />
-        <img
-            class="home-backgroundc"
-            src="@/assets/image/home/bg-3.png"
-            v-if="route.path === 'home'" />
-        <div class="footer-logo-box">
-            <div class="logo-image">
-                <img class="img-this" src="@/assets/image/home/logo.png" alt="" />
-                <span class="title-this">BOUNTYCLUE</span>
-            </div>
-            <p class="description-body">
-                BountyClue is designed to help crypto investors to buy crypto assets at cheaper
-                prices, investors can get a shorter release cycle.It aims to help the project party
-                get more real crypto investment users. Facilitate the liquidity and trading volume
-                of crypto assets.
-            </p>
+    <div class="footer">
+        <div class="footer-item">
+            <p class="privacy-pollcy">Privacy Policy &nbsp; Terms &Conditions</p>
+            <p class="privacy-pollcyb">BonutyClue © 2022. All right reserved.</p>
         </div>
-        <div class="footer-left-box">
-            <div class="privacy active">Privacy Policy</div>
-            <div class="privacy">Terms & Conditions</div>
+        <div class="footer-item">
             <div class="iconfont-list">
-                <div class="iconfont-list-show">
-                    <i class="iconfont icon-medium"></i>
-                    <i class="iconfont icon-twitter-fill"></i>
-                    <i class="iconfont icon-github-fill"></i>
-                    <i class="iconfont icon-discord"></i>
-                </div>
-                <span class="bonuty-clue">BountyClue © 2022. All right reserved.</span>
+                <i class="iconfont icon-medium"></i>
+                <i
+                    class="iconfont icon-twitter-fill"
+                    @click="pushLink('https://twitter.com/BountyClue')"></i>
+                <i class="iconfont icon-github-fill"></i>
+                <i class="iconfont icon-discord"></i>
             </div>
         </div>
-    </footer>
+    </div>
 </template>
 <style lang="less" scoped>
 .footer {
-    position: relative;
+    height: 100px;
+    background-color: #000;
+    box-shadow: 0px 4px 12px 1px rgba(106, 106, 106, 0.31);
     display: flex;
     justify-content: space-between;
-    padding: 100px 102px;
+    align-items: center;
+    padding: 20px 115px;
     box-sizing: border-box;
-    background: transparent;
-    padding-bottom: 40px;
-    .home-backgroundb {
-        width: 100%;
-        position: absolute;
-        left: 0px;
-        bottom: 0px;
-        z-index: -1;
-    }
-    .home-backgroundc {
-        width: 792px;
-        position: absolute;
-        opacity: 0.9;
-        left: 0;
-        bottom: 0;
-        z-index: -1;
-    }
-    .footer-logo-box {
-        display: flex;
-        flex-direction: column;
-        .logo-image {
-            display: flex;
-            align-items: center;
-            .img-this {
-                width: 60px;
-                height: 60px;
-            }
-            .title-this {
-                font-size: 26px;
-                font-family: MicrosoftYaHeiUI;
-                font-weight: 600;
-                color: #010101;
-                line-height: 176px;
-                opacity: 0.89;
-                text-shadow: 0px 9px 6px rgba(0, 0, 0, 0.4);
-                margin-left: 10px;
-            }
-        }
-        .description-body {
-            width: 563px;
-            font-size: 24px;
-            font-weight: 400;
-            color: #050505;
-        }
-    }
-    .footer-left-box {
-        display: flex;
-        align-items: flex-end;
-        .privacy {
-            margin-right: 41px;
-            font-size: 24px;
+    .footer-item {
+        .privacy-pollcy {
+            font-size: 20px;
             font-weight: 600;
+            color: #fff;
         }
-        .active {
-            color: #43378d;
+        .privacy-pollcyb {
+            font-size: 18px;
+            font-weight: 500;
+            font-style: italic;
+            color: #656468;
+            margin-top: 5px;
+            color: #fff;
         }
         .iconfont-list {
-            .iconfont-list-show {
-                display: flex;
-                justify-content: flex-end;
-                align-items: center;
-                margin-bottom: 28px;
-                .iconfont {
-                    font-size: 60px;
-                    color: #010101;
-                    margin-left: 28px;
-                }
-            }
-            .bonuty-clue {
-                font-size: 24px;
-                font-weight: 400;
-                font-style: italic;
-                color: #656468;
+            display: flex;
+            align-items: center;
+            .iconfont {
+                font-size: 40px;
+                margin-left: 16px;
+                color: #fff;
+                cursor: pointer;
             }
         }
+    }
+}
+@media screen and (max-width: 600px) {
+    .privacy-pollcy {
+        display: none;
     }
 }
 </style>

@@ -1,22 +1,25 @@
 /** * @file * @author 何明暄 */
 <script setup>
 import { reactive } from 'vue'
-import HeaderV2 from '@/components/header-v2.vue'
-import FooterV2 from '@/components/footer-v2.vue'
+import Header from '@/components/header.vue'
+import Footer from '@/components/footer.vue'
+import { monitorSize, setScrollbarWidth } from '@/utils/utils.js'
 const state = reactive({})
+monitorSize()
+setScrollbarWidth()
 </script>
 <template>
     <div class="app">
-        <HeaderV2 />
+        <Header />
         <router-view class="router-view"></router-view>
-        <FooterV2 />
+        <Footer />
     </div>
 </template>
 <style lang="less">
 @import './assets/iconfont/iconfont.css';
 @font-face {
     font-family: SpaceMono;
-    src: url('./assets/iconfont/SPACEMONO-BOLD.TTF');
+    src: url('./assets/iconfont/spacemono.ttf');
 }
 * {
     margin: 0;

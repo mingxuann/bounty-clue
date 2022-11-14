@@ -10,7 +10,7 @@ const route = useRoute()
 const store = useStore()
 const state = reactive({
     menuListItem: '/home',
-    headerAnmition: false,
+    headerAnmition: true,
     walletPopup: false,
 })
 const assets = computed(() => store.state.persistence.assets)
@@ -40,13 +40,13 @@ const routerPush = (item) => {
 const onLogoClick = () => {
     router.push('/home')
 }
-window.addEventListener('scroll', function () {
-    if (document.documentElement.scrollTop > 170) {
-        state.headerAnmition = true
-    } else {
-        state.headerAnmition = false
-    }
-})
+// window.addEventListener('scroll', function () {
+//     if (document.documentElement.scrollTop > 170) {
+//         state.headerAnmition = true
+//     } else {
+//         state.headerAnmition = false
+//     }
+// })
 const onConnectClick = async () => {
     const userDoLongParameter = await metaMaskVerification()
     store.commit('setAssets', userDoLongParameter.address) // 存入钱包
@@ -56,44 +56,10 @@ const onConnectClick = async () => {
 </script>
 
 <template>
-    <img class="home-backgrounda" src="@/assets/image/home/bg-1.png" alt="" />
-    <header class="header-box" :class="{ 'anmition-show': state.headerAnmition }">
-        <div class="header-box-content">
-            <div class="logo-img-box" @click="onLogoClick">
-                <img class="logo-img" src="@/assets/image/home/logo-head.png" alt="" />
-                <div class="logo">BOUNYCLUE</div>
-            </div>
-            <div class="tab-list">
-                <div
-                    class="tab-item"
-                    v-for="item in menuList"
-                    :class="{ active: item.path == route.path }"
-                    @click="routerPush(item)">
-                    {{ item.name }}
-                </div>
-            </div>
-            <div class="login-button-box">
-                <div class="login-button" v-if="!assets" @click="onConnectClick">Connect</div>
-                <div class="login-button" v-else>{{ assetsShow }}</div>
-                <div class="wallet-details" v-if="state.walletPopup">
-                    <div class="wallet-details-matemake matemake-show">
-                        <img class="mate-logo" src="@/assets/image/common/meta-mask.png" alt="" />
-                        <span class="metamask-text">MetaMask</span>
-                        <i class="iconfont icon-roundcheckfill"></i>
-                    </div>
-                    <div class="wallet-details-matemake log-out">
-                        <i class="iconfont icon-dengchu-box-r-xian"></i>
-                        <span class="metamask-text">Log out</span>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </header>
-
     <header class="header-box anmition" :class="{ 'anmition-show': state.headerAnmition }">
         <div class="header-box-content">
             <div class="logo-img-box" @click="onLogoClick">
-                <img class="logo-img" src="@/assets/image/home/logo-head.png" alt="" />
+                <img class="logo-img" src="@/assets/image/common/logo.png" alt="" />
                 <div class="logo">BOUNYCLUE</div>
             </div>
             <div class="tab-list">
@@ -106,7 +72,7 @@ const onConnectClick = async () => {
                 </div>
             </div>
             <div class="login-button-box">
-                <div class="login-button" v-if="!assets" @click="onConnectClick">Connect</div>
+                <div class="login-button" v-if="!assets" @click="onConnectClick">Launch App</div>
                 <div class="login-button" v-else>{{ assetsShow }}</div>
                 <div class="wallet-details" v-if="state.walletPopup">
                     <div class="wallet-details-matemake matemake-show">
@@ -141,7 +107,6 @@ const onConnectClick = async () => {
     justify-content: center;
     top: 0;
     left: 0;
-    // overflow: hidden;
     z-index: 2;
     .header-box-content {
         width: 1700px;
@@ -169,7 +134,7 @@ const onConnectClick = async () => {
 
         .tab-list {
             display: flex;
-            margin-left: 77px;
+            margin-left: 60px;
             .tab-item {
                 margin-left: 44px;
                 cursor: pointer;
@@ -257,11 +222,16 @@ const onConnectClick = async () => {
     position: fixed;
     top: -120px;
     z-index: 2;
-    background-color: rgba(255, 255, 255, 0.9);
-    box-shadow: rgba(100, 100, 111, 0.1) 0px 7px 29px 0px;
+    background-color: rgba(255, 255, 255, 1);
+    box-shadow: 0px 4px 12px 1px rgba(106, 106, 106, 0.31);
     transition: 0.5s;
 }
 .anmition-show {
     top: 0px;
+}
+@media screen and (max-width: 600px) {
+    .login-button {
+        display: none;
+    }
 }
 </style>
