@@ -2,6 +2,7 @@ function setSize() {
     // 设备宽度 动态设置fontSize
     let deviceWidth = document.documentElement.clientWidth
     if (deviceWidth < 1000) deviceWidth = 1000
+    if (deviceWidth > 1920) deviceWidth = 1920
     // 设计稿宽度
     const baseValue = 1920
     let oHtml = document.getElementsByTagName('html')[0]

@@ -9,7 +9,7 @@ const pushLink = (link) => {
 <template>
     <div class="footer">
         <div class="footer-item">
-            <p class="privacy-pollcy">Privacy Policy &nbsp; Terms &Conditions</p>
+            <p class="privacy-pollcy">Privacy Policy &nbsp; Terms & Conditions</p>
             <p class="privacy-pollcyb">BonutyClue © 2022. All right reserved.</p>
         </div>
         <div class="footer-item">
@@ -37,7 +37,6 @@ const pushLink = (link) => {
     .footer-item {
         .privacy-pollcy {
             font-size: 20px;
-            font-weight: 600;
             color: #fff;
         }
         .privacy-pollcyb {

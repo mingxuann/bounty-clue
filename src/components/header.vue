@@ -140,7 +140,6 @@ const onConnectClick = async () => {
                 cursor: pointer;
                 font-size: 24px;
                 font-family: MicrosoftYaHeiUI;
-                font-weight: 600;
                 color: #010101;
             }
             .active {

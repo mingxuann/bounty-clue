@@ -8,6 +8,7 @@ let service = axios.create({
 service.interceptors.request.use(
     (config) => {
         config.headers['AuthAuthorize'] = store.state.persistence.walletToken || ''
+        config.url = import.meta.env.DEV ? config.url : import.meta.env.REQUEST_URL + config.url
         return config
     },
     (error) => {
