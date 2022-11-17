@@ -11,11 +11,6 @@ let routes = [
         component: Home,
     },
     {
-        path: '/home-out',
-        name: 'home-out',
-        component: () => import('@/views/home-out.vue'),
-    },
-    {
         path: '/claim',
         name: 'claim',
         component: () => import('@/views/claim.vue'),

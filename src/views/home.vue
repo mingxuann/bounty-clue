@@ -32,7 +32,7 @@ const onGetNftAssets = async () => {
     localStorage.removeItem('discordCode')
     const windowThis = window.open(
         `https://discord.com/oauth2/authorize?response_type=code&client_id=1035082770885648424&scope=identify%20guilds.join&state=15773059ghq9183habn&redirect_uri=${
-            import.meta.env.REQUEST_URL
+            import.meta.env.VITE_REQUEST_URL
         }&prompt=consent`,
         '',
         'width=550,height=800'
@@ -48,6 +48,7 @@ const onGetNftAssets = async () => {
 }
 const onNextPage = (nexts) => {
     if (nexts === -1 && state.pages === 0) return
+    if (nexts === 1 && state.pages === 4) return
     state.pages = state.pages + nexts
 }
 </script>
@@ -143,6 +144,7 @@ const onNextPage = (nexts) => {
                 <div class="incubator-box">
                     <p class="incubator-title">Incubator</p>
                     <p class="incubator-mini">Features</p>
+                    <p class="incubator-dash">《《《《《《《《《《《《《《《《《《《《《《《</p>
                     <div class="design-on-box">
                         <div class="design-on">
                             <div class="design-ona">
@@ -549,11 +551,19 @@ const onNextPage = (nexts) => {
                     font-weight: 400;
                     color: #494949;
                 }
+                .incubator-dash {
+                    font-size: 20px;
+                    font-weight: 400;
+                    color: #494949;
+                    position: relative;
+                    left: -10px;
+                    margin-top: 26px;
+                }
                 .design-on-box {
                     width: 1200px;
                     display: flex;
                     justify-content: space-between;
-                    margin-top: 55px;
+                    margin-top: 40px;
                     .design-on {
                         .design-ona {
                             width: 480px;
