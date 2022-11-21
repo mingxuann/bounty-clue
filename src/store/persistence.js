@@ -3,7 +3,6 @@ const persistence = {
         assets: false, // 钱包地址
         assetsShow: '', // 钱包展示
         walletToken: false, // 钱包地址token
-        ethBalance: 0,
         walletType: 'MetaMask',
     }),
     mutations: {
@@ -17,16 +16,13 @@ const persistence = {
                 assets.length
             )}`
         },
-        setETH(state, assets) {
-            state.ethBalance = (assets / 1000000000000000000).toFixed(10)
-        },
         setWalletType(state, data) {
             state.walletType = data
         },
         stateLogout(state) {
             state.assets = false
             state.assetsShow = ''
-            state.ethBalance = 0
+            state.walletToken = ''
         },
     },
 }

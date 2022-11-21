@@ -4,6 +4,7 @@ import { reactive, onMounted } from 'vue'
 import { discordOauthToken } from '@/api/index.js'
 const state = reactive({
     pages: 0,
+    leftActive: false,
 })
 onMounted(() => {
     setInterval(() => {
@@ -29,11 +30,10 @@ const create = (blob) => {
     blob.style.setProperty('--r', `${random(0, 20)}deg`)
 }
 const onGetNftAssets = async () => {
+    await discordOauthToken('BvWYD8gnAJVEa7JzXHEGAnjPo8u423')
     localStorage.removeItem('discordCode')
     const windowThis = window.open(
-        `https://discord.com/oauth2/authorize?response_type=code&client_id=1035082770885648424&scope=identify%20guilds.join&state=15773059ghq9183habn&redirect_uri=${
-            import.meta.env.VITE_REQUEST_URL
-        }&prompt=consent`,
+        `https://discord.com/oauth2/authorize?response_type=code&client_id=1035082770885648424&scope=identify%20guilds.join&state=15773059ghq9183habn&redirect_uri=${window.location.origin}&prompt=consent`,
         '',
         'width=550,height=800'
     )
@@ -51,13 +51,31 @@ const onNextPage = (nexts) => {
     if (nexts === 1 && state.pages === 4) return
     state.pages = state.pages + nexts
 }
+setInterval(() => {
+    setTimeout(() => {
+        state.leftActive = !state.leftActive
+    }, 0)
+    setTimeout(() => {
+        state.leftActive = !state.leftActive
+    }, 200)
+    setTimeout(() => {
+        state.leftActive = !state.leftActive
+    }, 400)
+    setTimeout(() => {
+        state.leftActive = !state.leftActive
+    }, 600)
+}, 3000)
 </script>
 <template>
     <div class="home-box">
-        <div class="switch-right" @click="onNextPage(+1)">
-            <i class="iconfont icon-xiangyouliangci"></i>
+        <div class="switch-left" @click="onNextPage(-1)" v-if="state.pages != 0">
+            <i class="iconfont icon-jiantou_xiangzuoliangci"></i>
         </div>
-        <div class="switch-left" @click="onNextPage(-1)">
+        <div
+            class="switch-right"
+            :class="{ active: state.leftActive }"
+            @click="onNextPage(+1)"
+            v-if="state.pages != 4">
             <i class="iconfont icon-xiangyouliangci"></i>
         </div>
         <div class="home-content" :style="{ left: state.pages * -100 + 'vw' }">
@@ -71,7 +89,9 @@ const onNextPage = (nexts) => {
                 <div class="bountyclue-box">
                     <p class="bountyclue-title">BOUNTYCLUE</p>
                     <div class="bountyclue-line"></div>
-                    <p class="bountyclue-smail-title">Group Purchase Of Crypto Assets</p>
+                    <p class="bountyclue-smail-title">
+                        Group <span>&</span> Purchase Of Crypto Assets
+                    </p>
                     <div class="button-box">
                         <div class="start-on" @click="changeState">Start On</div>
                         <div class="start-on">
@@ -185,7 +205,7 @@ const onNextPage = (nexts) => {
             <div class="home-page home-pagee">
                 <img class="pageb-bga" src="@/assets/image/home/pageb-bg.png" />
                 <img class="pageb-bgb" src="@/assets/image/home/pageb-bg.png" />
-                <div>
+                <div class="home-pagee-index">
                     <p class="road-map">RoadMap</p>
                     <p class="lamination">
                         The lamination teaching method rest. The lamination teaching. The lamination
@@ -237,7 +257,7 @@ const onNextPage = (nexts) => {
 </template>
 <style lang="less" scoped>
 .home-box {
-    width: calc(100vw - var(--scrollbar));
+    width: calc(99.9vw - var(--scrollbar));
     height: 100vh;
     position: relative;
     overflow: hidden;
@@ -247,20 +267,23 @@ const onNextPage = (nexts) => {
         bottom: 40px;
         z-index: 1;
         cursor: pointer;
-        .icon-xiangyouliangci {
-            font-size: 46px;
+        transition: 0.3s;
+        .iconfont {
+            font-size: 56px;
             color: #000;
         }
+    }
+    .active {
+        right: 60px;
     }
     .switch-left {
         position: absolute;
         left: 80px;
-        bottom: 30px;
+        bottom: 40px;
         z-index: 1;
         cursor: pointer;
-        transform: rotate(180deg);
-        .icon-xiangyouliangci {
-            font-size: 46px;
+        .iconfont {
+            font-size: 56px;
             color: #000;
         }
     }
@@ -412,15 +435,14 @@ const onNextPage = (nexts) => {
                 display: flex;
                 flex-wrap: wrap;
                 justify-content: space-between;
+                z-index: 1;
                 .bounty-clue-biake {
                     width: 540px;
                     height: 154px;
-                    background: #262626;
                     line-height: 154px;
                     text-align: center;
                     font-size: 56px;
                     font-weight: 400;
-                    color: #ffffff;
                 }
                 .bounty-clue-about {
                     width: 540px;
@@ -444,10 +466,10 @@ const onNextPage = (nexts) => {
                 .bounty-clue-forin {
                     width: 540px;
                     height: 340px;
-                    background: rgba(38, 38, 38, 0);
+                    background-color: #fff;
                     border: 2px solid #6a6a6a;
                     border-radius: 24px;
-                    margin-top: 103px;
+                    margin-top: 120px;
                     color: #262626;
                     padding: 40px 40px;
                     box-sizing: border-box;
@@ -626,6 +648,10 @@ const onNextPage = (nexts) => {
             flex-direction: column;
             justify-content: center;
             align-items: center;
+            .home-pagee-index {
+                position: relative;
+                z-index: 1;
+            }
             .pageb-bga {
                 width: 826px;
                 height: 247px;

@@ -15,7 +15,7 @@ export default defineConfig({
         host: '0.0.0.0',
         proxy: {
             '/bounty-clue': {
-                target: 'https://2507ys1775.oicp.vip',
+                target: 'http://10.7.11.100:10888',
                 changeOrigin: true,
                 rewrite: (path) => path.replace(/^\/bounty-clue/, 'bounty-clue'),
             },

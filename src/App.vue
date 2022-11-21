@@ -34,4 +34,8 @@ a {
     flex-direction: column;
     min-height: 100vh;
 }
+.el-icon {
+    width: 40px !important;
+    height: 40px !important;
+}
 </style>

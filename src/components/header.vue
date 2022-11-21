@@ -48,6 +48,7 @@ const onLogoClick = () => {
 //     }
 // })
 const onConnectClick = async () => {
+    // window.open('app.bountyclue.com', '_blank')
     const userDoLongParameter = await metaMaskVerification()
     store.commit('setAssets', userDoLongParameter.address) // 存入钱包
     const res = await userDoLong(userDoLongParameter)
@@ -81,6 +82,10 @@ const onConnectClick = async () => {
                         <i class="iconfont icon-roundcheckfill"></i>
                     </div>
                     <div class="wallet-details-matemake log-out">
+                        <i class="iconfont icon-dengchu-box-r-xian"></i>
+                        <span class="metamask-text">Discord</span>
+                    </div>
+                    <div class="wallet-details-matemake log-out" @click="logOut">
                         <i class="iconfont icon-dengchu-box-r-xian"></i>
                         <span class="metamask-text">Log out</span>
                     </div>
