@@ -5,6 +5,7 @@ import { discordOauthToken } from '@/api/index.js'
 const state = reactive({
     pages: 0,
     leftActive: false,
+    switchIcon: 0,
 })
 onMounted(() => {
     setInterval(() => {
@@ -30,21 +31,8 @@ const create = (blob) => {
     blob.style.setProperty('--r', `${random(0, 20)}deg`)
 }
 const onGetNftAssets = async () => {
-    // await discordOauthToken('BvWYD8gnAJVEa7JzXHEGAnjPo8u423')
-    localStorage.removeItem('discordCode')
-    const windowThis = window.open(
-        `https://discord.com/oauth2/authorize?response_type=code&client_id=1035082770885648424&scope=identify%20guilds.join&state=15773059ghq9183habn&redirect_uri=${window.location.origin}&prompt=consent`,
-        '',
-        'width=550,height=800'
-    )
-    let timer
-    timer = setInterval(async () => {
-        if (localStorage.getItem('discordCode')) {
-            clearInterval(timer)
-            windowThis.close()
-            await discordOauthToken(localStorage.getItem('discordCode'))
-        }
-    }, 500)
+    window.location.href = `https://discord.com/oauth2/authorize?response_type=code&client_id=1035082770885648424&scope=identify%20guilds.join&state=15773059ghq9183habn&redirect_uri=https://bountyclue.com/bounty-clue/discord/oauth/token/callback&prompt=consent`
+    // window.location.origin
 }
 const onNextPage = (nexts) => {
     if (nexts === -1 && state.pages === 0) return
@@ -52,31 +40,40 @@ const onNextPage = (nexts) => {
     state.pages = state.pages + nexts
 }
 setInterval(() => {
-    setTimeout(() => {
-        state.leftActive = !state.leftActive
-    }, 0)
-    setTimeout(() => {
-        state.leftActive = !state.leftActive
-    }, 200)
-    setTimeout(() => {
-        state.leftActive = !state.leftActive
-    }, 400)
-    setTimeout(() => {
-        state.leftActive = !state.leftActive
-    }, 600)
-}, 3000)
+    state.switchIcon += 1
+    if (state.switchIcon > 2) {
+        state.switchIcon = 0
+    }
+}, 400)
 </script>
 <template>
     <div class="home-box">
         <div class="switch-left" @click="onNextPage(-1)" v-if="state.pages != 0">
-            <i class="iconfont icon-jiantou_xiangzuoliangci"></i>
+            <i
+                class="iconfont icon-fanhui"
+                :class="{ 'active-iconfont': state.switchIcon === 0 }"></i>
+            <i
+                class="iconfont icon-fanhui"
+                :class="{ 'active-iconfont': state.switchIcon === 1 }"></i>
+            <i
+                class="iconfont icon-fanhui"
+                :class="{ 'active-iconfont': state.switchIcon === 2 }"></i>
+            <span class="back">BACK</span>
         </div>
         <div
             class="switch-right"
             :class="{ active: state.leftActive }"
             @click="onNextPage(+1)"
             v-if="state.pages != 5">
-            <i class="iconfont icon-xiangyouliangci"></i>
+            <i
+                class="iconfont icon-gengduo"
+                :class="{ 'active-iconfont': state.switchIcon === 0 }"></i>
+            <i
+                class="iconfont icon-gengduo"
+                :class="{ 'active-iconfont': state.switchIcon === 1 }"></i>
+            <i
+                class="iconfont icon-gengduo"
+                :class="{ 'active-iconfont': state.switchIcon === 2 }"></i>
         </div>
         <div class="home-content" :style="{ left: state.pages * -100 + 'vw' }">
             <div class="home-page home-pagea">
@@ -211,29 +208,33 @@ setInterval(() => {
                             The lamination teaching method rest.The lamination teaching. <br />
                             Thelamination teaching method rest.
                         </div>
-                        <div class="house">
-                            <div class="house-button">House</div>
-                            <p class="the-lamina">
-                                The lamination teaching method rest.The lamination teaching.
-                            </p>
+                        <div class="house-boxs">
+                            <div class="house">
+                                <div class="house-button">House</div>
+                                <p class="the-lamina">
+                                    The lamination teaching method rest.The lamination teaching.
+                                </p>
+                            </div>
+                            <div class="house">
+                                <div class="house-button">House</div>
+                                <p class="the-lamina">
+                                    The lamination teaching method rest.The lamination teaching.
+                                </p>
+                            </div>
                         </div>
-                        <div class="house">
-                            <div class="house-button">House</div>
-                            <p class="the-lamina">
-                                The lamination teaching method rest.The lamination teaching.
-                            </p>
-                        </div>
-                        <div class="house">
-                            <div class="house-button">House</div>
-                            <p class="the-lamina">
-                                The lamination teaching method rest.The lamination teaching.
-                            </p>
-                        </div>
-                        <div class="house">
-                            <div class="house-button">House</div>
-                            <p class="the-lamina">
-                                The lamination teaching method rest.The lamination teaching.
-                            </p>
+                        <div class="house-boxs">
+                            <div class="house">
+                                <div class="house-button">House</div>
+                                <p class="the-lamina">
+                                    The lamination teaching method rest.The lamination teaching.
+                                </p>
+                            </div>
+                            <div class="house">
+                                <div class="house-button">House</div>
+                                <p class="the-lamina">
+                                    The lamination teaching method rest.The lamination teaching.
+                                </p>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -305,7 +306,11 @@ setInterval(() => {
         cursor: pointer;
         transition: 0.3s;
         .iconfont {
-            font-size: 56px;
+            font-size: 48px;
+            color: #999;
+            margin: 0 -12px;
+        }
+        .active-iconfont {
             color: #000;
         }
     }
@@ -319,8 +324,13 @@ setInterval(() => {
         z-index: 1;
         cursor: pointer;
         .iconfont {
-            font-size: 56px;
+            font-size: 48px;
             color: #000;
+            margin: 0 -12px;
+        }
+        .back {
+            font-size: 48px;
+            margin-left: 10px;
         }
     }
     .home-content {
@@ -694,19 +704,28 @@ setInterval(() => {
                     border-radius: 27px;
                 }
                 .gover-box {
-                    width: 800px;
+                    width: 730px;
                     margin-left: 106px;
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: flex-end;
                     .title {
                         font-size: 52px;
                         font-weight: 400;
                         color: #494949;
-                        margin-top: 60px;
+                        margin-bottom: 20px;
                     }
                     .lamination-distop {
                         font-size: 18px;
                         font-weight: 400;
                         color: #494949;
                         margin-top: 16 px;
+                    }
+                    .house-boxs {
+                        width: 100%;
+                        display: flex;
+                        justify-content: space-between;
+                        margin-top: 66px;
                     }
                     .house {
                         width: 330px;
@@ -716,8 +735,6 @@ setInterval(() => {
                         padding: 28px;
                         box-sizing: border-box;
                         display: inline-block;
-                        margin-right: 49px;
-                        margin-top: 60px;
                         .house-button {
                             width: 128px;
                             height: 40px;

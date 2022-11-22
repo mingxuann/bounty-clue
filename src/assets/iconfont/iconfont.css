@@ -1,6 +1,6 @@
 @font-face {
   font-family: "iconfont"; /* Project id 3710521 */
-  src: url('iconfont.woff2?t=1669025221905') format('woff2');
+  src: url('iconfont.woff2?t=1669098998138') format('woff2');
 }
 
 .iconfont {
@@ -9,6 +9,14 @@
   font-style: normal;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-fanhui:before {
+  content: "\e601";
+}
+
+.icon-gengduo:before {
+  content: "\e602";
 }
 
 .icon-jiantou_xiangzuoliangci:before {
