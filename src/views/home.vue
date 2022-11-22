@@ -30,7 +30,7 @@ const create = (blob) => {
     blob.style.setProperty('--r', `${random(0, 20)}deg`)
 }
 const onGetNftAssets = async () => {
-    await discordOauthToken('BvWYD8gnAJVEa7JzXHEGAnjPo8u423')
+    // await discordOauthToken('BvWYD8gnAJVEa7JzXHEGAnjPo8u423')
     localStorage.removeItem('discordCode')
     const windowThis = window.open(
         `https://discord.com/oauth2/authorize?response_type=code&client_id=1035082770885648424&scope=identify%20guilds.join&state=15773059ghq9183habn&redirect_uri=${window.location.origin}&prompt=consent`,
@@ -48,7 +48,7 @@ const onGetNftAssets = async () => {
 }
 const onNextPage = (nexts) => {
     if (nexts === -1 && state.pages === 0) return
-    if (nexts === 1 && state.pages === 4) return
+    if (nexts === 1 && state.pages === 5) return
     state.pages = state.pages + nexts
 }
 setInterval(() => {
@@ -75,7 +75,7 @@ setInterval(() => {
             class="switch-right"
             :class="{ active: state.leftActive }"
             @click="onNextPage(+1)"
-            v-if="state.pages != 4">
+            v-if="state.pages != 5">
             <i class="iconfont icon-xiangyouliangci"></i>
         </div>
         <div class="home-content" :style="{ left: state.pages * -100 + 'vw' }">
@@ -90,7 +90,7 @@ setInterval(() => {
                     <p class="bountyclue-title">BOUNTYCLUE</p>
                     <div class="bountyclue-line"></div>
                     <p class="bountyclue-smail-title">
-                        Group <span>&</span> Purchase Of Crypto Assets
+                        Promotion And Group Purchase Of Crypto Assets
                     </p>
                     <div class="button-box">
                         <div class="start-on" @click="changeState">Start On</div>
@@ -202,6 +202,42 @@ setInterval(() => {
                     </div>
                 </div>
             </div>
+            <div class="home-page home-newpage">
+                <div class="governance-box">
+                    <div class="phones-box"></div>
+                    <div class="gover-box">
+                        <div class="title">Governance</div>
+                        <div class="lamination-distop">
+                            The lamination teaching method rest.The lamination teaching. <br />
+                            Thelamination teaching method rest.
+                        </div>
+                        <div class="house">
+                            <div class="house-button">House</div>
+                            <p class="the-lamina">
+                                The lamination teaching method rest.The lamination teaching.
+                            </p>
+                        </div>
+                        <div class="house">
+                            <div class="house-button">House</div>
+                            <p class="the-lamina">
+                                The lamination teaching method rest.The lamination teaching.
+                            </p>
+                        </div>
+                        <div class="house">
+                            <div class="house-button">House</div>
+                            <p class="the-lamina">
+                                The lamination teaching method rest.The lamination teaching.
+                            </p>
+                        </div>
+                        <div class="house">
+                            <div class="house-button">House</div>
+                            <p class="the-lamina">
+                                The lamination teaching method rest.The lamination teaching.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
             <div class="home-page home-pagee">
                 <img class="pageb-bga" src="@/assets/image/home/pageb-bg.png" />
                 <img class="pageb-bgb" src="@/assets/image/home/pageb-bg.png" />
@@ -288,7 +324,7 @@ setInterval(() => {
         }
     }
     .home-content {
-        width: 500vw;
+        width: 600vw;
         height: 100vh;
         transition: 0.8s;
         position: absolute;
@@ -334,6 +370,7 @@ setInterval(() => {
                 height: 800px;
                 top: 41%;
                 left: 76%;
+                background: linear-gradient(-160deg, #ffffff, #f2f1f1, #cecece);
             }
             .random-shaped {
                 width: 450px;
@@ -431,21 +468,21 @@ setInterval(() => {
                 transform: rotate(180deg);
             }
             .bounty-clue-box {
-                width: 1200px;
+                width: 1700px;
                 display: flex;
                 flex-wrap: wrap;
                 justify-content: space-between;
                 z-index: 1;
                 .bounty-clue-biake {
-                    width: 540px;
+                    width: 800px;
                     height: 154px;
                     line-height: 154px;
                     text-align: center;
-                    font-size: 56px;
+                    font-size: 58px;
                     font-weight: 400;
                 }
                 .bounty-clue-about {
-                    width: 540px;
+                    width: 800px;
                     height: 154px;
                     display: flex;
                     flex-direction: column;
@@ -464,8 +501,8 @@ setInterval(() => {
                     }
                 }
                 .bounty-clue-forin {
-                    width: 540px;
-                    height: 340px;
+                    width: 800px;
+                    height: 500px;
                     background-color: #fff;
                     border: 2px solid #6a6a6a;
                     border-radius: 24px;
@@ -474,13 +511,13 @@ setInterval(() => {
                     padding: 40px 40px;
                     box-sizing: border-box;
                     .title-project {
-                        font-size: 26px;
+                        font-size: 30px;
                         margin-bottom: 20px;
                         text-align: center;
                     }
                     .lt-aims {
-                        font-size: 24px;
-                        line-height: 46px;
+                        font-size: 28px;
+                        line-height: 48px;
                         text-align: center;
                     }
                 }
@@ -638,6 +675,65 @@ setInterval(() => {
                                 color: #242424;
                                 margin-top: 28px;
                             }
+                        }
+                    }
+                }
+            }
+        }
+        .home-newpage {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            .governance-box {
+                display: flex;
+                justify-content: space-between;
+                .phones-box {
+                    width: 389px;
+                    height: 664px;
+                    background: #acacac;
+                    border-radius: 27px;
+                }
+                .gover-box {
+                    width: 800px;
+                    margin-left: 106px;
+                    .title {
+                        font-size: 52px;
+                        font-weight: 400;
+                        color: #494949;
+                        margin-top: 60px;
+                    }
+                    .lamination-distop {
+                        font-size: 18px;
+                        font-weight: 400;
+                        color: #494949;
+                        margin-top: 16 px;
+                    }
+                    .house {
+                        width: 330px;
+                        height: 180px;
+                        background: #262626;
+                        border-radius: 14px;
+                        padding: 28px;
+                        box-sizing: border-box;
+                        display: inline-block;
+                        margin-right: 49px;
+                        margin-top: 60px;
+                        .house-button {
+                            width: 128px;
+                            height: 40px;
+                            background: #ffffff;
+                            border-radius: 10px;
+                            font-size: 24px;
+                            font-weight: 400;
+                            color: #262626;
+                            text-align: center;
+                            line-height: 40px;
+                        }
+                        .the-lamina {
+                            font-size: 18px;
+                            font-weight: 400;
+                            color: #ffffff;
+                            margin-top: 24px;
                         }
                     }
                 }
