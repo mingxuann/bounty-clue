@@ -1,3 +1,5 @@
+import { getQueryString } from '@/utils/common.js'
+import { discordOauthToken } from '@/api/index.js'
 function setSize() {
     // 设备宽度 动态设置fontSize
     let deviceWidth = document.documentElement.clientWidth
@@ -9,6 +11,7 @@ function setSize() {
     oHtml.style.fontSize = (deviceWidth / baseValue) * 100 + 'px'
 }
 export const setScrollbarWidth = () => {
+    // 获取滚动条参数
     const container = document.createElement('div')
     document.body.appendChild(container)
     container.style.overflow = 'scroll'
@@ -30,4 +33,12 @@ export function monitorSize() {
         setSize()
     })
     setSize()
+}
+export const processingUrlParameters = async () => {
+    // 处理参数
+    if (getQueryString('code')) {
+        await discordOauthToken(getQueryString('code'))
+    }
+    // store.state.discordCode = getQueryString('code')
+    // localStorage.setItem('discordCode', getQueryString('code'))
 }

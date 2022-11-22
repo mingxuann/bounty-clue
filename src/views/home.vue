@@ -1,7 +1,7 @@
 /** * @file * @author 何明暄 */
 <script setup>
 import { reactive, onMounted } from 'vue'
-import { discordOauthToken } from '@/api/index.js'
+
 const state = reactive({
     pages: 0,
     leftActive: false,
@@ -31,8 +31,21 @@ const create = (blob) => {
     blob.style.setProperty('--r', `${random(0, 20)}deg`)
 }
 const onGetNftAssets = async () => {
-    window.location.href = `https://discord.com/oauth2/authorize?response_type=code&client_id=1035082770885648424&scope=identify%20guilds.join&state=15773059ghq9183habn&redirect_uri=https://bountyclue.com/bounty-clue/discord/oauth/token/callback&prompt=consent`
+    // await discordOauthToken('BvWYD8gnAJVEa7JzXHEGAnjPo8u423')
+    // localStorage.removeItem('discordCode')
+    // const windowThis = window.open(
+    //     `https://discord.com/oauth2/authorize?response_type=code&client_id=1035082770885648424&scope=identify%20guilds.join&state=15773059ghq9183habn&redirect_uri=https://bountyclue.com/bounty-clue/discord/oauth/token/callback&prompt=consent`
+    // )
+    window.location.href = `https://discord.com/oauth2/authorize?response_type=code&client_id=1035082770885648424&scope=identify%20guilds.join&state=15773059ghq9183habn&redirect_uri=${window.location.origin}&prompt=consent`
     // window.location.origin
+    // let timer
+    // timer = setInterval(async () => {
+    //     if (localStorage.getItem('discordCode')) {
+    //         clearInterval(timer)
+    //         windowThis.close()
+    //         await discordOauthToken(localStorage.getItem('discordCode'))
+    //     }
+    // }, 500)
 }
 const onNextPage = (nexts) => {
     if (nexts === -1 && state.pages === 0) return
