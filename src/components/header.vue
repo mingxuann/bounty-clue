@@ -25,8 +25,8 @@ const menuList = [
         path: '/incubator',
     },
     {
-        name: 'Stake',
-        path: '/stake',
+        name: 'Governance',
+        path: '/governance',
     },
     {
         name: 'Claim',
@@ -48,11 +48,14 @@ const onLogoClick = () => {
 //     }
 // })
 const onConnectClick = async () => {
-    // window.open('app.bountyclue.com', '_blank')
-    const userDoLongParameter = await metaMaskVerification()
-    store.commit('setAssets', userDoLongParameter.address) // 存入钱包
-    const res = await userDoLong(userDoLongParameter)
-    store.commit('stateWalletToken', res.data.result.token) // 存入Token
+    window.open('https://app.bountyclue.com', '_blank')
+    // const userDoLongParameter = await metaMaskVerification()
+    // store.commit('setAssets', userDoLongParameter.address) // 存入钱包
+    // const res = await userDoLong(userDoLongParameter)
+    // store.commit('stateWalletToken', res.data.result.token) // 存入Token
+}
+const openUrl = async (urls) => {
+    window.open('https://app.bountyclue.com' + urls, '_blank')
 }
 </script>
 
@@ -68,42 +71,18 @@ const onConnectClick = async () => {
                     class="tab-item"
                     v-for="item in menuList"
                     :class="{ active: item.path == route.path }"
-                    @click="routerPush(item)">
+                    @click="openUrl(item.path)">
                     {{ item.name }}
                 </div>
             </div>
             <div class="login-button-box">
-                <div class="login-button" v-if="!assets" @click="onConnectClick">Launch App</div>
-                <div class="login-button" v-else>{{ assetsShow }}</div>
-                <div class="wallet-details" v-if="state.walletPopup">
-                    <div class="wallet-details-matemake matemake-show">
-                        <img class="mate-logo" src="@/assets/image/common/meta-mask.png" alt="" />
-                        <span class="metamask-text">MetaMask</span>
-                        <i class="iconfont icon-roundcheckfill"></i>
-                    </div>
-                    <div class="wallet-details-matemake log-out">
-                        <i class="iconfont icon-dengchu-box-r-xian"></i>
-                        <span class="metamask-text">Discord</span>
-                    </div>
-                    <div class="wallet-details-matemake log-out" @click="logOut">
-                        <i class="iconfont icon-dengchu-box-r-xian"></i>
-                        <span class="metamask-text">Log out</span>
-                    </div>
-                </div>
+                <div class="login-button" @click="onConnectClick">Launch App</div>
             </div>
         </div>
     </header>
 </template>
 
 <style lang="less" scoped>
-.home-backgrounda {
-    width: 1100px;
-    position: absolute;
-    top: 0;
-    right: 0;
-    opacity: 0.9;
-    z-index: -1;
-}
 .header-box {
     width: 100%;
     position: relative;
@@ -124,7 +103,6 @@ const onConnectClick = async () => {
             cursor: pointer;
             .logo-img {
                 width: 49px;
-                height: 49px;
                 margin-right: 15px;
             }
             .logo {
@@ -146,6 +124,10 @@ const onConnectClick = async () => {
                 font-size: 24px;
                 font-family: MicrosoftYaHeiUI;
                 color: #010101;
+                transition: 0.3s;
+                &:hover {
+                    color: #0000cd;
+                }
             }
             .active {
                 color: #43378d;
@@ -166,57 +148,10 @@ const onConnectClick = async () => {
                 line-height: 54px;
                 text-align: center;
                 cursor: pointer;
-            }
-            .wallet-details {
-                width: 420px;
-                background-color: rgba(255, 255, 255, 0.7);
-                border-radius: 10px;
-                position: absolute;
-                top: 70px;
-                right: 0;
-                display: flex;
-                flex-direction: column;
-                align-items: center;
-                box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
-                padding: 40px 20px;
-                box-sizing: border-box;
-                .wallet-details-matemake {
-                    width: 100%;
-                    display: flex;
-                    align-items: center;
-                    margin: 26px 0;
-                    padding: 16px 30px;
-                    box-sizing: border-box;
-                    .mate-logo {
-                        width: 50px;
-                    }
-                    .metamask-text {
-                        font-size: 26px;
-                        color: #333;
-                        margin-left: 40px;
-                    }
-                    .icon-roundcheckfill {
-                        font-size: 36px;
-                        color: #30c87c;
-                        margin-left: 80px;
-                    }
-                    .icon-dengchu-box-r-xian {
-                        width: 50px;
-                        text-align: center;
-                        font-size: 36px;
-                        color: #333;
-                    }
-                }
-                .matemake-show {
-                    background-color: rgb(195, 195, 195);
-                    border-radius: 14px;
-                }
-                .log-out {
-                    cursor: pointer;
-                    transition: 0.3s;
-                    &:hover {
-                        color: #7b35e0;
-                    }
+                transition: 0.3s;
+                &:hover {
+                    color: #fff;
+                    background: #0000cd;
                 }
             }
         }

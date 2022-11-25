@@ -30,22 +30,8 @@ const create = (blob) => {
     blob.style.borderRadius = coordinates
     blob.style.setProperty('--r', `${random(0, 20)}deg`)
 }
-const onGetNftAssets = async () => {
-    // await discordOauthToken('BvWYD8gnAJVEa7JzXHEGAnjPo8u423')
-    // localStorage.removeItem('discordCode')
-    // const windowThis = window.open(
-    //     `https://discord.com/oauth2/authorize?response_type=code&client_id=1035082770885648424&scope=identify%20guilds.join&state=15773059ghq9183habn&redirect_uri=https://bountyclue.com/bounty-clue/discord/oauth/token/callback&prompt=consent`
-    // )
-    window.location.href = `https://discord.com/oauth2/authorize?response_type=code&client_id=1035082770885648424&scope=identify%20guilds.join&state=15773059ghq9183habn&redirect_uri=${window.location.origin}&prompt=consent`
-    // window.location.origin
-    // let timer
-    // timer = setInterval(async () => {
-    //     if (localStorage.getItem('discordCode')) {
-    //         clearInterval(timer)
-    //         windowThis.close()
-    //         await discordOauthToken(localStorage.getItem('discordCode'))
-    //     }
-    // }, 500)
+const openUrl = async (urls) => {
+    window.open(urls, '_blank')
 }
 const onNextPage = (nexts) => {
     if (nexts === -1 && state.pages === 0) return
@@ -102,18 +88,26 @@ setInterval(() => {
                     <p class="bountyclue-smail-title">
                         Promotion And Group Purchase Of Crypto Assets
                     </p>
+                    <p class="bountyclue-smail-title">Web3 Project TVL Solution Provider</p>
                     <div class="button-box">
-                        <div class="start-on" @click="changeState">Start On</div>
-                        <div class="start-on">
+                        <div class="start-on" @click="openUrl('https://app.bountyclue.com')">
+                            Start On
+                        </div>
+                        <div class="start-on" @click="openUrl('https://docs.bountyclue.com')">
                             Know More
                             <i class="iconfont icon-fenxiang"></i>
                         </div>
                     </div>
                     <div class="iconfont-list-hade">
-                        <i class="iconfont icon-medium"></i>
-                        <i class="iconfont icon-twitter-fill"></i>
-                        <i class="iconfont icon-github-fill"></i>
-                        <i class="iconfont icon-discord" @click="onGetNftAssets"></i>
+                        <i
+                            class="iconfont icon-medium"
+                            @click="openUrl('https://bountyclue.medium.com')"></i>
+                        <i
+                            class="iconfont icon-twitter-fill"
+                            @click="openUrl('https://twitter.com/BountyClue')"></i>
+                        <i
+                            class="iconfont icon-discord"
+                            @click="openUrl('https://discord.gg/dcaG4cFex3')"></i>
                     </div>
                 </div>
             </div>
@@ -121,13 +115,16 @@ setInterval(() => {
                 <img class="pageb-bga" src="@/assets/image/home/pageb-bg.png" />
                 <img class="pageb-bgb" src="@/assets/image/home/pageb-bg.png" />
                 <div class="bounty-clue-box">
-                    <div class="bounty-clue-biake">BountyClue</div>
-                    <div class="bounty-clue-about">
+                    <div class="bounty-clue-biake">
+                        <span>BountyClue</span>
                         <span class="about-titile">About</span>
                         <span class="creating">
-                            Creating something great is actually quite simple.
+                            We hope that through the actions of BonutyClue, the distance between
+                            investors and project parties will be shortened, so that every user can
+                            truly become a shareholder member of the project.
                         </span>
                     </div>
+                    <div class="bounty-clue-about"></div>
                     <div class="bounty-clue-forin">
                         <h1 class="title-project">For Investor</h1>
                         <div class="lt-aims">
@@ -135,14 +132,24 @@ setInterval(() => {
                             ecological projects. <br />lt is designed to help crypto investorsto<br />
                             buy crypto assets at cheaper prices.
                         </div>
+                        <div
+                            class="start-on-forin"
+                            @click="openUrl('https://app.bountyclue.com/promotion')">
+                            <span>Explore</span>
+                            <i class="iconfont icon-fenxiang"></i>
+                        </div>
                     </div>
                     <div class="bounty-clue-forin">
                         <h1 class="title-project">For Project</h1>
                         <div class="lt-aims">
                             lt aims to help the project party getmore <br />
-                            real crypto investment users.Facilitate <br />the liquidity and trading
-                            <br />
+                            real crypto investment users.Facilitate <br />
+                            the liquidity and trading<br />
                             volume of crypto assets.
+                            <div class="start-on-forin">
+                                <span>Explore</span>
+                                <i class="iconfont icon-fenxiang"></i>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -159,7 +166,10 @@ setInterval(() => {
                                 providing a solution for crypto investors to create group buying of
                                 crypto assets.
                             </div>
-                            <div class="start-on">START ON</div>
+                            <div class="start-on">
+                                <span>START ON</span>
+                                <i class="iconfont icon-fenxiang"></i>
+                            </div>
                         </div>
                     </div>
                     <div class="currency-display">
@@ -314,10 +324,11 @@ setInterval(() => {
     .switch-right {
         position: absolute;
         right: 80px;
-        bottom: 40px;
+        bottom: 30px;
         z-index: 1;
         cursor: pointer;
         transition: 0.3s;
+        z-index: 99;
         .iconfont {
             font-size: 48px;
             color: #999;
@@ -333,9 +344,9 @@ setInterval(() => {
     .switch-left {
         position: absolute;
         left: 80px;
-        bottom: 40px;
-        z-index: 1;
+        bottom: 30px;
         cursor: pointer;
+        z-index: 99;
         .iconfont {
             font-size: 48px;
             color: #000;
@@ -440,10 +451,11 @@ setInterval(() => {
                     font-weight: 400;
                     color: #000005;
                     text-shadow: 0px 4px 12px rgba(0, 0, 0, 0.31);
+                    margin-bottom: 20px;
                 }
                 .button-box {
                     display: flex;
-                    margin-top: 65px;
+                    margin-top: 50px;
                     .start-on {
                         padding: 20px 50px;
                         border: 2px solid #454545;
@@ -455,18 +467,29 @@ setInterval(() => {
                         color: #010101;
                         display: flex;
                         align-items: center;
+                        transition: 0.3s;
+                        cursor: pointer;
                         .icon-fenxiang {
                             font-size: 32px;
                             margin-left: 14px;
                         }
+                        &:hover {
+                            background-color: #454545;
+                            color: #fff;
+                        }
                     }
                 }
                 .iconfont-list-hade {
-                    margin-top: 39px;
+                    margin-top: 16px;
                     .iconfont {
-                        font-size: 80px;
+                        font-size: 50px;
                         margin-right: 50px;
                         text-shadow: 0px 4px 12px rgba(0, 0, 0, 0.31);
+                        cursor: pointer;
+                        transition: 0.3s;
+                        &:hover {
+                            color: #0000cd;
+                        }
                     }
                 }
             }
@@ -496,21 +519,14 @@ setInterval(() => {
                 flex-wrap: wrap;
                 justify-content: space-between;
                 z-index: 1;
+                position: relative;
+                top: -60px;
                 .bounty-clue-biake {
                     width: 800px;
-                    height: 154px;
-                    line-height: 154px;
-                    text-align: center;
                     font-size: 58px;
                     font-weight: 400;
-                }
-                .bounty-clue-about {
-                    width: 800px;
-                    height: 154px;
                     display: flex;
                     flex-direction: column;
-                    justify-content: center;
-                    align-items: flex-start;
                     .about-titile {
                         font-size: 36px;
                         font-weight: 400;
@@ -523,13 +539,21 @@ setInterval(() => {
                         margin-top: 14px;
                     }
                 }
+                .bounty-clue-about {
+                    width: 800px;
+                    height: 154px;
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: center;
+                    align-items: flex-start;
+                }
                 .bounty-clue-forin {
                     width: 800px;
-                    height: 500px;
+                    height: 420px;
                     background-color: #fff;
                     border: 2px solid #6a6a6a;
                     border-radius: 24px;
-                    margin-top: 120px;
+                    margin-top: 60px;
                     color: #262626;
                     padding: 40px 40px;
                     box-sizing: border-box;
@@ -543,6 +567,32 @@ setInterval(() => {
                         line-height: 48px;
                         text-align: center;
                     }
+                    .start-on-forin {
+                        width: 580px;
+                        height: 60px;
+                        border: 2px solid #454545;
+                        border-radius: 30px;
+                        font-size: 26px;
+                        font-weight: 400;
+                        color: #010101;
+                        box-sizing: border-box;
+                        margin: auto;
+                        margin-top: 30px;
+                        cursor: pointer;
+                        transition: 0.3s;
+                        display: flex;
+                        justify-content: space-between;
+                        align-items: center;
+                        padding: 0 36px;
+                        box-sizing: border-box;
+                        .iconfont {
+                            font-size: 30px;
+                        }
+                        &:hover {
+                            background-color: #454545;
+                            color: #fff;
+                        }
+                    }
                 }
             }
         }
@@ -552,12 +602,14 @@ setInterval(() => {
             justify-content: center;
             align-items: center;
             .promotion-box {
-                width: 1200px;
+                width: 1700px;
                 margin: auto;
                 display: flex;
                 justify-content: space-between;
+                position: relative;
+                top: -100px;
                 .promotion-featu {
-                    width: 488px;
+                    width: 548px;
                     .promotiona {
                         font-size: 52px;
                         font-weight: 400;
@@ -576,32 +628,39 @@ setInterval(() => {
                         line-height: 36px;
                     }
                     .start-on {
-                        width: 488px;
-                        height: 54px;
+                        width: auto;
+                        height: 60px;
                         background: #3c3c3c;
                         border-radius: 27px;
-                        font-size: 18px;
+                        font-size: 20px;
                         font-weight: 400;
                         color: #ffffff;
-                        line-height: 54px;
-                        padding-left: 36px;
+                        padding: 0 36px;
                         box-sizing: border-box;
                         margin-top: 16px;
+                        display: flex;
+                        justify-content: space-between;
+                        align-items: center;
+                        i {
+                            font-size: 30px;
+                        }
                     }
                 }
             }
             .currency-display {
                 display: flex;
                 justify-content: space-between;
-                width: 1200px;
+                width: 1700px;
                 margin: auto;
                 margin-top: 79px;
+                position: relative;
+                top: -100px;
                 .pagec-promo {
-                    width: 822px;
+                    width: 1000px;
                 }
                 .pagec-promo-black {
-                    width: 294px;
-                    height: 350px;
+                    width: 350px;
+                    height: 430px;
                     background: #262626;
                     display: flex;
                     justify-content: center;
