@@ -93,7 +93,7 @@ const openUrl = async (urls) => {
     left: 0;
     z-index: 2;
     .header-box-content {
-        width: 1700px;
+        width: 90vw;
         height: 100%;
         display: flex;
         align-items: center;
@@ -126,7 +126,7 @@ const openUrl = async (urls) => {
                 color: #010101;
                 transition: 0.3s;
                 &:hover {
-                    color: #0000cd;
+                    color: #c2c4ff;
                 }
             }
             .active {
@@ -150,8 +150,9 @@ const openUrl = async (urls) => {
                 cursor: pointer;
                 transition: 0.3s;
                 &:hover {
-                    color: #fff;
-                    background: #0000cd;
+                    color: #000;
+                    background: #c2c4ff;
+                    border: 1px solid #c2c4ff;
                 }
             }
         }

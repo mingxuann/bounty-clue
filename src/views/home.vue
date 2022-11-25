@@ -124,7 +124,14 @@ setInterval(() => {
                             truly become a shareholder member of the project.
                         </span>
                     </div>
-                    <div class="bounty-clue-about"></div>
+                    <div class="bounty-clue-about">
+                        <div
+                            class="start-on-forin"
+                            @click="openUrl('https://app.bountyclue.com/promotion')">
+                            <span>Know More</span>
+                            <i class="iconfont icon-fenxiang"></i>
+                        </div>
+                    </div>
                     <div class="bounty-clue-forin">
                         <h1 class="title-project">For Investor</h1>
                         <div class="lt-aims">
@@ -146,16 +153,16 @@ setInterval(() => {
                             real crypto investment users.Facilitate <br />
                             the liquidity and trading<br />
                             volume of crypto assets.
-                            <div class="start-on-forin">
-                                <span>Explore</span>
-                                <i class="iconfont icon-fenxiang"></i>
-                            </div>
+                        </div>
+                        <div class="start-on-forin">
+                            <span>Explore</span>
+                            <i class="iconfont icon-fenxiang"></i>
                         </div>
                     </div>
                 </div>
             </div>
             <div class="home-page home-pagec">
-                <div>
+                <div class="home-pagec-boxss">
                     <div class="promotion-box">
                         <div class="promotion-featu">
                             <p class="promotiona">Promotion</p>
@@ -166,7 +173,9 @@ setInterval(() => {
                                 providing a solution for crypto investors to create group buying of
                                 crypto assets.
                             </div>
-                            <div class="start-on">
+                            <div
+                                class="start-on-forin start-onc"
+                                @click="openUrl('https://app.bountyclue.com/promotion')">
                                 <span>START ON</span>
                                 <i class="iconfont icon-fenxiang"></i>
                             </div>
@@ -194,7 +203,13 @@ setInterval(() => {
                                 cooperation between investors and project parties, and drive project
                                 growth through the community
                             </div>
-                            <div class="design-onb">DESIGN ON</div>
+                            <div
+                                class="start-on-forin design-onb"
+                                @click="openUrl('https://app.bountyclue.com/promotion')">
+                                <span>DESIGN ON</span>
+                                <i class="iconfont icon-fenxiang"></i>
+                            </div>
+                            <!-- <div class="design-onb">DESIGN ON</div> -->
                         </div>
                         <div class="brand-box">
                             <div class="brand-item">
@@ -224,7 +239,9 @@ setInterval(() => {
             </div>
             <div class="home-page home-newpage">
                 <div class="governance-box">
-                    <div class="phones-box"></div>
+                    <div class="phones-box">
+                        <img src="@/assets/image/home/newpagee.png" />
+                    </div>
                     <div class="gover-box">
                         <div class="title">Governance</div>
                         <div class="lamination-distop">
@@ -514,19 +531,21 @@ setInterval(() => {
                 transform: rotate(180deg);
             }
             .bounty-clue-box {
-                width: 1700px;
+                width: 90vw;
+                height: 65vh;
                 display: flex;
                 flex-wrap: wrap;
                 justify-content: space-between;
                 z-index: 1;
-                position: relative;
-                top: -60px;
+                margin-bottom: 100px;
                 .bounty-clue-biake {
                     width: 800px;
+                    height: 300px;
                     font-size: 58px;
                     font-weight: 400;
                     display: flex;
                     flex-direction: column;
+                    justify-content: center;
                     .about-titile {
                         font-size: 36px;
                         font-weight: 400;
@@ -541,22 +560,23 @@ setInterval(() => {
                 }
                 .bounty-clue-about {
                     width: 800px;
-                    height: 154px;
+                    height: 300px;
                     display: flex;
-                    flex-direction: column;
                     justify-content: center;
-                    align-items: flex-start;
+                    align-items: center;
                 }
                 .bounty-clue-forin {
-                    width: 800px;
-                    height: 420px;
+                    width: 780px;
                     background-color: #fff;
                     border: 2px solid #6a6a6a;
                     border-radius: 24px;
-                    margin-top: 60px;
                     color: #262626;
-                    padding: 40px 40px;
+                    padding: 30px;
                     box-sizing: border-box;
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: space-between;
+                    align-items: center;
                     .title-project {
                         font-size: 30px;
                         margin-bottom: 20px;
@@ -568,30 +588,7 @@ setInterval(() => {
                         text-align: center;
                     }
                     .start-on-forin {
-                        width: 580px;
-                        height: 60px;
-                        border: 2px solid #454545;
-                        border-radius: 30px;
-                        font-size: 26px;
-                        font-weight: 400;
-                        color: #010101;
-                        box-sizing: border-box;
-                        margin: auto;
                         margin-top: 30px;
-                        cursor: pointer;
-                        transition: 0.3s;
-                        display: flex;
-                        justify-content: space-between;
-                        align-items: center;
-                        padding: 0 36px;
-                        box-sizing: border-box;
-                        .iconfont {
-                            font-size: 30px;
-                        }
-                        &:hover {
-                            background-color: #454545;
-                            color: #fff;
-                        }
                     }
                 }
             }
@@ -601,13 +598,17 @@ setInterval(() => {
             flex-direction: column;
             justify-content: center;
             align-items: center;
+            .home-pagec-boxss {
+                width: 90vw;
+                height: 65vh;
+                display: flex;
+                flex-direction: column;
+                justify-content: space-between;
+                margin-bottom: 100px;
+            }
             .promotion-box {
-                width: 1700px;
-                margin: auto;
                 display: flex;
                 justify-content: space-between;
-                position: relative;
-                top: -100px;
                 .promotion-featu {
                     width: 548px;
                     .promotiona {
@@ -619,48 +620,30 @@ setInterval(() => {
                         font-size: 28px;
                         font-weight: 400;
                         color: #494949;
+                        margin-top: 12px;
                     }
                     .providing {
                         font-family: Aparajita;
-                        font-size: 22px;
+                        font-size: 26px;
                         color: #161616;
                         padding-left: 14px;
                         line-height: 36px;
                     }
-                    .start-on {
+                    .start-onc {
                         width: auto;
-                        height: 60px;
-                        background: #3c3c3c;
-                        border-radius: 27px;
-                        font-size: 20px;
-                        font-weight: 400;
-                        color: #ffffff;
-                        padding: 0 36px;
-                        box-sizing: border-box;
-                        margin-top: 16px;
-                        display: flex;
-                        justify-content: space-between;
-                        align-items: center;
-                        i {
-                            font-size: 30px;
-                        }
+                        margin-top: 30px;
                     }
                 }
             }
             .currency-display {
                 display: flex;
                 justify-content: space-between;
-                width: 1700px;
-                margin: auto;
-                margin-top: 79px;
-                position: relative;
-                top: -100px;
                 .pagec-promo {
-                    width: 1000px;
+                    width: 1200px;
                 }
                 .pagec-promo-black {
-                    width: 350px;
-                    height: 430px;
+                    width: 400px;
+                    height: 520px;
                     background: #262626;
                     display: flex;
                     justify-content: center;
@@ -681,7 +664,9 @@ setInterval(() => {
             justify-content: center;
             align-items: center;
             .incubator-box {
-                width: 1200px;
+                width: 90vw;
+                height: 65vh;
+                margin-bottom: 100px;
                 .incubator-title {
                     font-size: 52px;
                     font-weight: 400;
@@ -691,6 +676,7 @@ setInterval(() => {
                     font-size: 28px;
                     font-weight: 400;
                     color: #494949;
+                    margin-top: 10px;
                 }
                 .incubator-dash {
                     font-size: 20px;
@@ -701,40 +687,32 @@ setInterval(() => {
                     margin-top: 26px;
                 }
                 .design-on-box {
-                    width: 1200px;
                     display: flex;
                     justify-content: space-between;
                     margin-top: 40px;
                     .design-on {
+                        width: 40vw;
                         .design-ona {
-                            width: 480px;
-                            font-size: 18px;
+                            width: 40vw;
+                            font-size: 20px;
                             font-weight: 400;
                             color: #3c3c3c;
                             line-height: 32px;
-                            margin-top: 15px;
                             padding-left: 5px;
                             box-sizing: border-box;
                         }
                         .design-onb {
-                            width: 478px;
-                            height: 54px;
-                            background: #3c3c3c;
-                            border-radius: 27px;
-                            font-size: 18px;
-                            font-weight: 400;
-                            color: #ffffff;
-                            line-height: 54px;
-                            padding-left: 36px;
-                            box-sizing: border-box;
-                            margin-top: 36px;
+                            width: auto;
+                            margin-top: 130px;
                         }
                     }
                     .brand-box {
+                        width: 45vw;
                         display: flex;
+                        justify-content: space-around;
                         .brand-item {
                             .brand-itema {
-                                width: 211px;
+                                width: 250px;
                                 height: 53px;
                                 background: #d9d9d9;
                                 border-radius: 10px;
@@ -745,17 +723,18 @@ setInterval(() => {
                                 line-height: 53px;
                             }
                             .brand-itemb {
-                                width: 210px;
-                                height: 211px;
+                                width: 250px;
+                                height: 250px;
                                 background: #d9d9d9;
                                 margin-top: 16px;
                             }
                             .brand-itemc {
-                                width: 222px;
+                                width: 250px;
                                 font-size: 18px;
                                 font-weight: 400;
                                 color: #242424;
-                                margin-top: 28px;
+                                margin-top: 24px;
+                                text-align: center;
                             }
                         }
                     }
@@ -767,20 +746,28 @@ setInterval(() => {
             justify-content: center;
             align-items: center;
             .governance-box {
+                width: 90vw;
+                height: 65vh;
                 display: flex;
                 justify-content: space-between;
+                margin-bottom: 100px;
                 .phones-box {
-                    width: 389px;
-                    height: 664px;
-                    background: #acacac;
+                    background: #f4f7ff;
                     border-radius: 27px;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    padding: 40px 50px;
+                    img {
+                        width: 500px;
+                    }
                 }
                 .gover-box {
-                    width: 730px;
+                    width: 900px;
                     margin-left: 106px;
                     display: flex;
                     flex-direction: column;
-                    justify-content: flex-end;
+                    justify-content: space-between;
                     .title {
                         font-size: 52px;
                         font-weight: 400;
@@ -788,20 +775,21 @@ setInterval(() => {
                         margin-bottom: 20px;
                     }
                     .lamination-distop {
-                        font-size: 18px;
+                        font-size: 20px;
                         font-weight: 400;
                         color: #494949;
-                        margin-top: 16 px;
+                        margin-top: 16px;
+                        line-height: 36px;
                     }
                     .house-boxs {
                         width: 100%;
                         display: flex;
                         justify-content: space-between;
-                        margin-top: 66px;
+                        margin-top: 50px;
                     }
                     .house {
-                        width: 330px;
-                        height: 180px;
+                        width: 420px;
+                        height: 210px;
                         background: #262626;
                         border-radius: 14px;
                         padding: 28px;
@@ -834,6 +822,9 @@ setInterval(() => {
             justify-content: center;
             align-items: center;
             .home-pagee-index {
+                width: 90vw;
+                height: 65vh;
+                margin-bottom: 100px;
                 position: relative;
                 z-index: 1;
             }
@@ -865,7 +856,7 @@ setInterval(() => {
                 text-align: center;
             }
             .pagee-qn {
-                margin-top: 110px;
+                margin-top: 180px;
             }
             .the-lamination-box {
                 display: flex;
@@ -899,6 +890,32 @@ setInterval(() => {
                 }
             }
         }
+    }
+}
+.start-on-forin {
+    width: 580px;
+    height: 60px;
+    border: 2px solid #454545;
+    border-radius: 30px;
+    font-size: 26px;
+    font-weight: 400;
+
+    box-sizing: border-box;
+    cursor: pointer;
+    transition: 0.3s;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 36px;
+    box-sizing: border-box;
+    background-color: #454545;
+    color: #fff;
+    .iconfont {
+        font-size: 30px;
+    }
+    &:hover {
+        background-color: #fff;
+        color: #010101;
     }
 }
 </style>

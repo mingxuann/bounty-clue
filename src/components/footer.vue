@@ -8,21 +8,23 @@ const openUrl = (link) => {
 </script>
 <template>
     <div class="footer">
-        <div class="footer-item">
-            <p class="privacy-pollcy">Privacy Policy &nbsp;|&nbsp; Terms & Conditions</p>
-            <p class="privacy-pollcyb">BonutyClue © 2022. All right reserved.</p>
-        </div>
-        <div class="footer-item">
-            <div class="iconfont-list">
-                <i
-                    class="iconfont icon-medium"
-                    @click="openUrl('https://bountyclue.medium.com')"></i>
-                <i
-                    class="iconfont icon-twitter-fill"
-                    @click="openUrl('https://twitter.com/BountyClue')"></i>
-                <i
-                    class="iconfont icon-discord"
-                    @click="openUrl('https://discord.gg/dcaG4cFex3')"></i>
+        <div class="footer-box">
+            <div class="footer-item">
+                <p class="privacy-pollcy">Privacy Policy &nbsp;|&nbsp; Terms & Conditions</p>
+                <p class="privacy-pollcyb">BonutyClue © 2022. All right reserved.</p>
+            </div>
+            <div class="footer-item">
+                <div class="iconfont-list">
+                    <i
+                        class="iconfont icon-medium"
+                        @click="openUrl('https://bountyclue.medium.com')"></i>
+                    <i
+                        class="iconfont icon-twitter-fill"
+                        @click="openUrl('https://twitter.com/BountyClue')"></i>
+                    <i
+                        class="iconfont icon-discord"
+                        @click="openUrl('https://discord.gg/dcaG4cFex3')"></i>
+                </div>
             </div>
         </div>
     </div>
@@ -34,10 +36,16 @@ const openUrl = (link) => {
     box-shadow: 0px 4px 12px 1px rgba(106, 106, 106, 0.31);
     display: flex;
     justify-content: space-between;
-    align-items: flex-end;
-    padding: 14px 115px;
-    padding-top: 30px;
+    align-items: center;
     box-sizing: border-box;
+    .footer-box {
+        width: 95vw;
+        margin: 0 auto;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        box-sizing: border-box;
+    }
     .footer-item {
         .privacy-pollcy {
             font-size: 16px;
